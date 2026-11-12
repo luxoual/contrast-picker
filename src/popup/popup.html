@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contrast Picker</title>
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Contrast Picker</h1>
+      <button id="swap" class="icon" type="button" title="Swap foreground and background" aria-label="Swap colors">⇅</button>
+    </header>
+
+    <section class="colors">
+      <div class="color" data-slot="fg">
+        <div class="color-head">
+          <span class="name">Foreground <span class="muted">(A)</span></span>
+          <kbd class="shortcut"></kbd>
+        </div>
+        <div class="row">
+          <input type="color" aria-label="Foreground color">
+          <input type="text" class="hex" spellcheck="false" maxlength="7" aria-label="Foreground hex">
+          <button type="button" class="pick">Pick</button>
+        </div>
+      </div>
+      <div class="color" data-slot="bg">
+        <div class="color-head">
+          <span class="name">Background <span class="muted">(B)</span></span>
+          <kbd class="shortcut"></kbd>
+        </div>
+        <div class="row">
+          <input type="color" aria-label="Background color">
+          <input type="text" class="hex" spellcheck="false" maxlength="7" aria-label="Background hex">
+          <button type="button" class="pick">Pick</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="preview" class="preview" aria-label="Preview">
+      <p class="large">Large text 24px</p>
+      <p class="normal">Normal text — the quick brown fox jumps over the lazy dog.</p>
+      <div class="ui"><span class="ui-btn">Button</span><span class="ui-icon" aria-hidden="true"></span></div>
+    </section>
+
+    <section class="result">
+      <div class="ratio-wrap">
+        <span id="ratio" class="ratio"></span>
+        <span class="muted">contrast ratio</span>
+      </div>
+      <ul id="criteria"></ul>
+    </section>
+
+    <footer>
+      <a href="#" id="shortcuts">Change keyboard shortcuts</a>
+    </footer>
+  </main>
+</body>
+</html>

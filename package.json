@@ -1,0 +1,11 @@
+{
+  "name": "contrast-picker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome extension: pick two colors with hotkeys and check WCAG contrast.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "zip": "rm -f contrast-picker.zip && zip -r contrast-picker.zip manifest.json src -x '*.DS_Store'"
+  }
+}

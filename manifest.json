@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Contrast Picker",
+  "version": "0.1.0",
+  "description": "Pick foreground and background colors from any page with a hotkey and check their WCAG contrast ratio.",
+  "minimum_chrome_version": "116",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Contrast Picker",
+    "default_popup": "src/popup/popup.html"
+  },
+  "commands": {
+    "pick-foreground": {
+      "suggested_key": { "default": "Alt+Shift+1", "mac": "Command+Shift+1" },
+      "description": "Pick foreground color (Color A)"
+    },
+    "pick-background": {
+      "suggested_key": { "default": "Alt+Shift+2", "mac": "Command+Shift+2" },
+      "description": "Pick background color (Color B)"
+    }
+  }
+}
