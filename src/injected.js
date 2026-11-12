@@ -187,9 +187,16 @@ export function showToast(info) {
         font: 13px/1.35 system-ui, -apple-system, sans-serif; color: #f4f4f5;
         background: rgba(24,24,27,.96); border-radius: 12px; padding: 12px;
         box-shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.08);
-        cursor: pointer; animation: in .18s ease-out;
+        cursor: pointer;
+        opacity: 1; transform: translateY(0);
+        transition: opacity .2s ease-out, transform .2s ease-out, display .2s allow-discrete;
       }
-      @keyframes in { from { opacity: 0; transform: translateY(8px); } }
+      @starting-style { .toast { opacity: 0; transform: translateY(8px); } }
+      .toast.hidden {
+        display: none; opacity: 0; transform: translateY(8px);
+        transition-timing-function: ease-in;
+      }
+      @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
       .preview {
         flex: none; width: 64px; border-radius: 8px; display: grid; place-items: center;
         font: 700 26px/1 system-ui, sans-serif; box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
@@ -213,8 +220,21 @@ export function showToast(info) {
         <div class="badges">${badges}</div>
       </div>
     </div>`;
-  root.querySelector('.toast').addEventListener('click', () => host.remove());
+  const toast = root.querySelector('.toast');
+  let leaving = false;
+  const dismiss = () => {
+    if (leaving) return;
+    leaving = true;
+    // .hidden flips display to none; allow-discrete keeps the toast rendered
+    // until the opacity/transform transition finishes, then we drop the host.
+    toast.classList.add('hidden');
+    toast.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'opacity') host.remove();
+    });
+    setTimeout(() => host.remove(), 400); // fallback (reduced motion, no transitionend)
+  };
+  toast.addEventListener('click', dismiss);
   (document.body || document.documentElement).appendChild(host);
-  setTimeout(() => host.remove(), 8000);
+  setTimeout(dismiss, 8000);
   return true;
 }

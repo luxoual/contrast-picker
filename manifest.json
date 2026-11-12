@@ -3,7 +3,7 @@
   "name": "Contrast Picker",
   "version": "0.1.0",
   "description": "Pick foreground and background colors from any page with a hotkey and check their WCAG contrast ratio.",
-  "minimum_chrome_version": "116",
+  "minimum_chrome_version": "117",
   "permissions": ["activeTab", "scripting", "storage"],
   "background": {
     "service_worker": "src/background.js",

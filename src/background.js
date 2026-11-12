@@ -9,6 +9,10 @@ async function pick(slot, tab) {
   if (!tab?.id) return;
   const target = { tabId: tab.id };
 
+  // If the popup is open it holds focus, and the first click on the page would only
+  // dismiss it. Ask it to close itself; this rejects when no popup is open, which is fine.
+  await chrome.runtime.sendMessage({ type: 'close-popup' }).catch(() => {});
+
   // Fails on pages extensions can't touch (chrome://, Web Store, PDF viewer, etc.).
   await chrome.scripting.executeScript({ target, func: clearPickerUi });
   const dataUrl = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' });

@@ -71,6 +71,11 @@ $('#shortcuts').addEventListener('click', (e) => {
   chrome.tabs.create({ url: 'chrome://extensions/shortcuts' });
 });
 
+// A pick started (e.g. via hotkey while the popup is open): get out of the way.
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg?.type === 'close-popup') window.close();
+});
+
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === 'local' && changes.colors?.newValue) {
     colors = { ...colors, ...changes.colors.newValue };
