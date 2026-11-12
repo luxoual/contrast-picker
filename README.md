@@ -7,7 +7,7 @@ and you get the contrast ratio with pass/fail results for each WCAG threshold.
 ## Why
 
 I was working on some CSS, got really tired of using some random color picker I found on the
-internet, and figured I'd just make my own.
+internet, and was like f\*\*k it, I'm just gonna make my own.
 
 ## Hotkeys
 
