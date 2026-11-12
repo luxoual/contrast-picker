@@ -4,6 +4,11 @@ A Chrome extension for checking WCAG contrast between two colors picked from any
 Press one hotkey to pick the foreground (color A), another to pick the background (color B),
 and you get the contrast ratio with pass/fail results for each WCAG threshold.
 
+## Why
+
+I was working on some CSS, got really tired of using some random color picker I found on the
+internet, and figured I'd just make my own.
+
 ## Hotkeys
 
 | Action | macOS | Windows / Linux / ChromeOS |
