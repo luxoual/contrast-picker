@@ -86,3 +86,5 @@ for (const [name, slot] of [['pick-foreground', 'fg'], ['pick-background', 'bg']
   const kbd = slotEl(slot).querySelector('.shortcut');
   kbd.textContent = shortcut || 'No shortcut set';
 }
+$('#open-shortcut').textContent =
+  commands.find((c) => c.name === '_execute_action')?.shortcut || 'Not set';

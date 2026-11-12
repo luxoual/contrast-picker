@@ -10,6 +10,7 @@ and you get the contrast ratio with pass/fail results for each WCAG threshold.
 | --- | --- | --- |
 | Pick foreground (A) | `⌘ Shift 1` | `Alt Shift 1` |
 | Pick background (B) | `⌘ Shift 2` | `Alt Shift 2` |
+| Open the popup | `⌘ Shift 0` | `Alt Shift 0` |
 
 When you press one, the page freezes and a magnifier follows the cursor.
 **Click** (or press **Enter**) to pick the pixel. **Esc** cancels.
